@@ -10,7 +10,7 @@ The challenge consists of hiding the flag text `CTF{flag}` in a `.png` file. Eve
 
 For example, for pixel (1,1), the last bit of the R byte is replaced with the first bit of the flag, the last bit of the G byte with the second bit of the flag, and so on. Once we use R, G, and B for a pixel, we move to the next pixel. The order can be either row-wise or column-wise.
 
-However, in PNGs, we can’t directly manipulate the IDAT chunk because it's compressed, and the bytes don’t correspond to pixel colors in a straightforward order. To hide the message manually, you'd have to decompress the IDAT chunk and deal with the compression scheme. For this challenge, we used this Python script [**lsbsteg**](https://github.com/adrg/lsbsteg) to simplify the process:
+However, in PNGs, we can’t directly manipulate the IDAT chunk because it's compressed, and the bytes don’t correspond to pixel colors in a straightforward order. To hide the message manually, you'd have to decompress the IDAT chunk and deal with the compression scheme. You can learn more about it here: [**PNG Steganography**](https://blog.xpnsec.com/png-steganography/). For this challenge, we used this Python script [**lsbsteg**](https://github.com/adrg/lsbsteg) to simplify the process:
 
 ```bash
 python lsbsteg.py embed -o big-chonk.png big-chonk0.png "CTF{flag}"
